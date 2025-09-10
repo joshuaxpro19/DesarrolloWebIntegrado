@@ -2,13 +2,11 @@ import com.example.GestorColaboradores.model.Colaborador;
 import com.example.GestorColaboradores.repository.ColaboradorRepository;
 import com.example.GestorColaboradores.service.impl.ColaboradorServiceImpl;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(org.mockito.junit.jupiter.MockitoExtension.class)
 class ColaboradorServiceImplTest {
 
     @Mock
@@ -23,11 +22,6 @@ class ColaboradorServiceImplTest {
 
     @InjectMocks
     private ColaboradorServiceImpl service;
-
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     @DisplayName("Retorna lista de colaboradores correctamente")
@@ -79,7 +73,7 @@ class ColaboradorServiceImplTest {
                 IllegalArgumentException.class,
                 () -> service.crear(c)
         );
-        
+
         assertEquals("Email ya registrado", exception.getMessage());
         verify(repo, times(1)).existsByEmail("test@example.com");
         verify(repo, never()).save(any());
