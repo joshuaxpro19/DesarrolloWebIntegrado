@@ -1,0 +1,17 @@
+Para que ejecute hay que crear la conexión con la BD, nosotros hemos usado MySQL en su version workbench y escribiendo CREATE DATABASE customer_managment; , el jpa y el hibernate harán las tablas automáticamente suponiendo que si lo va a correr en su equipo, deberá cambiar las credenciales a  las suyas, para evitar esto en un futuro usaremos render haremos la base de datos en la nube.
+
+Debera cambiar los datos a los suyos en applicaction.properties
+
+Para el post-man deberá ejecutar el trabajo, y hemos usado
+Endpoint de GET usamos listar : http://localhost:8080/api/colaboradores que debera devolvernos un [] inicialmente, si ya agregamos datos apareceran los demas listados.
+Endpoint de POST usamos  crear : http://localhost:8080/api/colaboradores
+
+
+escogemos JSON en el body e introducimos la informmacion
+
+{
+  "nombre": "Juan",
+  "apellido": "Pérez",
+  "email": "juan.perez@example.com",
+  "telefono": "999999999"g
+}
